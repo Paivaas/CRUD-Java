@@ -16,5 +16,17 @@ insert into funcionarios (id_funcionarios, nome, cargo, salario, departamento) v
 (0, "Igor", "Dev", 10500, "T.I"),
 (0, "Luan", "Dev", 1000, "T.I");
 
+create table departamento(
+id_departamento int not null auto_increment,
+nome varchar(255) not null,
+sigla varchar(255) not null,
+
+primary key (id_departamento)
+);
+
+insert into departamento (nome, sigla) values
+("Desenvolvimento", "DEV"),
+("Qualidade","QA"),
+("Engenharia","ENG");
 
 select * from funcionarios;
