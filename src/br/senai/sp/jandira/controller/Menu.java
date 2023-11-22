@@ -1,6 +1,7 @@
 package br.senai.sp.jandira.controller;
 
 import br.senai.sp.jandira.model.Conexao;
+import br.senai.sp.jandira.model.Funcionario;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -29,7 +30,10 @@ public class Menu {
             FuncionarioController funcionarioController = new FuncionarioController();
             switch (opcao){
                 case 1:
-                    System.out.println("In Development");
+                    Funcionario funcionario1 = new Funcionario();
+                    funcionario1.cadastrarFuncionario();
+
+                    funcionarioController.cadastrarFuncionarios(funcionario1);
                     break;
                 case 2:
                     funcionarioController.listarFuncionarios();
@@ -45,7 +49,13 @@ public class Menu {
                     funcionarioController.pesquisarFuncionario(nomePesquisa);
                     break;
                 case 5:
-                    System.out.println("In Development");
+                    System.out.println("Informe de quem quer mudar o salario:");
+                    String nomeSalario = scanner.nextLine();
+
+                    System.out.println("Informe o novo salario:");
+                    Double novoSalario = scanner.nextDouble();
+                    funcionarioController.atualizarSalario(nomeSalario, novoSalario);
+
                     break;
                 case 6:
                     continuar = false;

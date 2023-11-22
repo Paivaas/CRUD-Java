@@ -45,9 +45,23 @@ public class FuncionarioController {
         statement.executeUpdate(queryDelete);
         System.out.println("Usuário "+ nome + " deletado com sucesso...");
     }
-    public void atualizarSalario(){
 
+
+
+
+
+    public void atualizarSalario(String nome, double salario) throws SQLException {
+        Statement statement = connection.createStatement();
+        String queryAtualizar = "UPDATE funcionarios SET salario="+salario+" WHERE nome='"+nome+"'";
+
+        statement.executeUpdate(queryAtualizar);
+        System.out.println("Dados Atualizados com sucesso");
     }
+
+
+
+
+
     public void pesquisarFuncionario(String nome) throws SQLException {
         Statement statement = connection.createStatement();
         String queryPesquisa = "SELECT * FROM funcionarios where nome='"+nome+"'";
@@ -79,8 +93,18 @@ public class FuncionarioController {
 
         }
     }
-    public void cadastrarFuncionarios(){
+    public void cadastrarFuncionarios(Funcionario funcionario) throws SQLException {
 
+        Statement statement = connection.createStatement();
+
+        String queryCadastro = "INSERT INTO funcionarios (id_funcionarios, nome, cargo, salario, departamento) values (" +
+                funcionario.getIdFuncionarios() + ",'" + funcionario.getNome() + "','" +
+                funcionario.getCargo() + "'," + funcionario.getSalario() + ",'" +
+                funcionario.getDepartamento() + "')"
+                ;
+
+        statement.executeUpdate(queryCadastro);
+        System.out.println("Funcionario cadastrado com sucesso");
 
     }
 }
